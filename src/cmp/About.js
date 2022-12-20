@@ -1,40 +1,44 @@
 import React, { useState } from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
 
-export default function About(){
-  const [myStyle,setMyStyle] = useState({
-    color: "black",
-    backgroundColor: "white",
-    // border: "2px solid black",
-  });
+export default function About(props){
+  // const [myStyle,setMyStyle] = useState({
+  //   color: "black",
+  //   backgroundColor: "white",
+  // });
 
-const [btntext, setBtntext] = useState("Enable Dark Mode")
-
-const toggleStyle = () =>{
-     if(myStyle.color === 'black'){
-        setMyStyle({
-            color: "white",
-            backgroundColor: "black",
-            border: '1.5px solid white'
-        })
-        setBtntext("Enable Light Mode")
-     }
-     else{
-        setMyStyle({
-            color:'black',
-            backgroundColor:'white',
-            border: '1.5px solid black'
-
-        })
-        setBtntext("Enable Dark Mode");
-
-     }
+  let myStyle = {
+    color: props.mode ==='dark'?'white':'#042743',
+    backgroundColor: props.mode ==='dark'?'rgb(36 74 104)':'white', 
 }
+
+// const [btntext, setBtntext] = useState("Enable Dark Mode")
+
+// const toggleStyle = () =>{
+//      if(myStyle.color === 'black'){
+//         setMyStyle({
+//             color: "white",
+//             backgroundColor: "black",
+//             border: '1.5px solid white'
+//         })
+//         setBtntext("Enable Light Mode")
+//      }
+//      else{
+//         setMyStyle({
+//             color:'black',
+//             backgroundColor:'white',
+//             border: '1.5px solid black'
+
+//         })
+//         setBtntext("Enable Dark Mode");
+
+//      }
+// }
 
 
   return (
-    <div className="container p-5" style={myStyle} >
-      <h1 className="my-3">About Us</h1>
+    <div className="container p-5" >
+      <h1 className="my-3" style={{color: props.mode ==='dark'?'white':'#042743'}}>About Us</h1>
       <div class="accordion" id="accordionExample" >
         <div class="accordion-item" style={myStyle}>
           <h2 class="accordion-header" id="headingOne">
@@ -133,11 +137,11 @@ const toggleStyle = () =>{
           </div>
         </div>
       </div>
-      <div className="container my-3">
+      {/* <div className="container my-3">
         <button onClick={toggleStyle} type="button" class="btn btn-primary">
           {btntext}
         </button>
-      </div>
+      </div> */}
     </div>
   );
 };
